@@ -7,10 +7,11 @@
 
 /*making color variables, use them or add to them to make life easier. 
 if you don't know how to use them, just do "--(variable name)" and vscode will complete it for you*/
-
+* {
+    font-family: "Sniglet", system-ui;
+}
 /*lowk doesn't work */
 body {
-    font-family: "Sniglet", system-ui;
     font-weight: 400;
     font-style: normal;
 
@@ -90,14 +91,23 @@ main {
     align-items: center;
 }
 
-/* Needs to be made round, likely issue with width and height
-  hopefully will make all back arrows consistent */
+.backBtn > a {
+    color: transparent;
+    text-decoration: none;
+}
 .backBtn {
-    border: black solid 1px;
+    border: transparent;
     border-radius: 50%;
     height: 50px;
     width: 50px;
     font-size: 1.5rem;
+}
+
+div > img {
+    display: flex;
+    margin-right: 100em;
+    width: 165px;
+    height: 170px;
 }
 
 /* Input fields */
@@ -127,18 +137,17 @@ main {
     
     border-radius: 5px;
 }
-
+/* make this blue box true to its size and change everything else alongside with it */
 .inputField ul {
     display: grid;
     grid-template: 1fr 1fr / 1fr 1fr;
     justify-content: center;
     align-items: center;
     row-gap: 80px;
-    column-gap: 300px;
+    column-gap: 1300px;
     background-color: var(--prim);
     width: 100%;
-    padding: 50px 20px;
-
+    padding: 60px 20px;
     border-radius: 10px;
     list-style: none;
 
@@ -149,7 +158,6 @@ main {
     & li h2 {
         text-align: start;
         text-wrap: nowrap;
-
         line-height: 0;
     }
     & li input {
@@ -163,11 +171,12 @@ main {
 
 #cont {
     position: absolute;
-    margin-top: 60vh;
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.51);;
+    margin-top: 35vw;
     margin-left: 50vw;
-    
     padding: 30px 90px;
-
     font-size: 30px;
     background-color: var(--thir);
 }
