@@ -1,5 +1,31 @@
 import './navigation.js';
 
+
+async function careerSelect() {
+  const selectElement = document.getElementById('occu');
+  const occupationSalaryMap = new Map();
+  
+  try {
+    const response = await fetch('https://eecu-data-server.vercel.app/data');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+    const users = await response.json();
+
+    users.forEach(user => {
+      occupationSalaryMap.set(user["Occupation"], user["Salary"]);
+      const option = new Option(user["Occupation"], user["Occupation"]);
+      selectElement.add(option);
+    });
+
+    selectElement.addEventListener('change', () => {
+      salary.textContent = occupationSalaryMap.get(selectElement.value) || '';
+    });
+  } catch (error) {
+    console.error('Error populating user select:', error);
+  }
+}
+careerSelect();
+
 const view = document.querySelector('.current-page');
 
 /** @type {Map<string, Category>} */

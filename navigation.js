@@ -43,7 +43,7 @@ function navigate(page) {
     if (page === current_page_number || page < 0 || page > templates.length - 1) {
         return;
     }
-    const prev_page = current_page_number;
+    // const prev_page = current_page_number;
     // const prev = /** @type {HTMLTemplateElement} */ (document.querySelector(`template.${page_view.id}`));
     const template = templates[current_page_number = page];
     const fragment = template.content.cloneNode(true);
@@ -53,11 +53,10 @@ function navigate(page) {
         elem.classList.remove('fulfilled');
         elem.previousElementSibling?.classList.remove('fulfilled');
     }
-    if (prev_page !== undefined) {
-        for (let i = 0; i < prev_page + 1; i++) {
-            nav_progress[i].classList.add('fulfilled');
-            nav_progress[i].previousElementSibling?.classList.add('fulfilled');
-        }
+    
+    for (let i = 0; i < page; i++) {
+        nav_progress[i]?.classList.add('fulfilled');
+        nav_progress[i]?.previousElementSibling?.classList.add('fulfilled');
     }
 }
 
